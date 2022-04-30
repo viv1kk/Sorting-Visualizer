@@ -11,70 +11,33 @@ function setup()
   canv.position(100,100,"sticky");
 
 
-  for (let i = 0; i < 8; i++)
+  for (let i = 0; i < 10; i++)
   {
     bar[i] = new Bar(i); // no of elements
     bar[i].createBar(50, random(height-50));
     bar[i].moveBar(50+(i*100),0);
-    bar[i].colorBar(color(0));
+    bar[i].colorBar(color(100));
    //values[i] = noise(i/100.0)*height;
  }
 
-  frameRate(5);
+  frameRate(60);
 }
-
-var i = 0;
-var j = 0;
 
 function draw()
 {
   canv.background(226, 222, 169);
-  bubbleSort(bar);
+  // bubbleSort(bar);
+  selectionSort(bar);
+  disp();
 
-  for(let k = 0; k < bar.length; k++)
-  {
-    bar[k].displayBar();
-    console.log(bar[k]);
-  }
   // window.requestAnimationFrame(draw);
 }
 
 
-function bubbleSort(bar)
+function disp()
 {
-  let a = bar[j].height;
-  let b = bar[j + 1].height;
-
-  if (a > b)
+  for(let k = 0; k < bar.length; k++)
   {
-    // swapping the object
-    let temp = bar[j];
-    bar[j] = bar[j+1];
-    bar[j+1] = temp;
-
-    // swapping the x values
-    temp = bar[j].x;
-    bar[j].x = bar[j+1].x;
-    bar[j+1].x = temp;
-    // console.log(temp);
-  }
-
-  if (i < bar.length)
-  {
-    j++;
-    if (j >= bar.length-i-1)
-    {
-      j = 0;
-      i++;
-    }
-  } else
-  {
-    noLoop();
-    console.log("finished");
-    for(let k = 0; k < bar.length; k++)
-    {
-      bar[k].displayBar();
-      console.log(bar[k].height);
-    }
+    bar[k].displayBar();
   }
 }
