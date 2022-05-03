@@ -9,16 +9,37 @@
 
     <script src="/scripts/sketch.js"></script>
     <script src="/scripts/Bar.js"></script>
+    <script src="/scripts/global_vars.js"></script>
     <script src="/scripts/bubble_sort.js"></script>
     <script src="/scripts/selection_sort.js"></script>
+    <script src="/scripts/insertion_sort.js"></script>
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
 
 
   <body>
     <h1 id="heading">Sorting Visualizer</h1>
-    <div class="">
-      <form action=""></form>
+    <div class="option">
+
+      <form action="#">
+        <label for="Sorting">Choose Algorithm</label>
+        <select name="Select" id="algo">
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <!-- <option value="golang">Golang</option>
+          <option value="python">Python</option>
+          <option value="c#">C#</option>
+          <option value="C++">C++</option>
+          <option value="erlang">Erlang</option> -->
+        </select>
+        <button type="button" onclick="runAlgo()">Sort!</button>
+        <button type="button" onclick="createNewBars()">Draw Random Values</button>
+      </form>
+
+<br /><br />
+<!-- <br /> -->
+
     </div>
     <div id='container_canvas' align=center></div>
   </body>

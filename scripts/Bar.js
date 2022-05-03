@@ -17,9 +17,10 @@ class Bar {
 
   displayBar()
   {
-    text(floor(this.height),this.x+5, height-this.height-10);
     fill(this.color);
     rect(this.x, height+this.y, this.width, -this.height);
+    fill(color(100));
+    text(floor(this.height),this.x, height+ylevel-this.height-10);
   }
 
   colorBar(color)
