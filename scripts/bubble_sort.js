@@ -11,38 +11,40 @@ function bubbleSort(bar)
 
   if (a > b)
   {
-    let speed = 1;
-    if(count == 0)
+    busy = 1;
+    if(busy)
     {
-      diff = (bar[j+1].x - bar[j].x);
-      console.log(diff);
-    }
+      let speed = 1;
+      if(count == 0)
+      {
+        dist = abs(bar[j+1].x - bar[j].x);
+        console.log(dist);
+      }
 
-    if(count < diff) // Animate the swapping of two Bars
+      if(count < dist) // Animate the swapping of two Bars
+      {
+        bar[j].moveBar(bar[j].x+speed,  ylevel);
+        bar[j+1].moveBar(bar[j+1].x-speed,  ylevel);
+        count+=speed;
+        disp();
+      }
+
+      if(count >= dist)
+      {
+        count = 0;
+        busy = 0;
+      }
+
+    }
+    if(!busy)
     {
-      bar[j].moveBar(bar[j].x+speed,  ylevel);
-      bar[j+1].moveBar(bar[j+1].x-speed,  ylevel);
-      count+=speed;
-      // disp();
+      temp = bar[j];
+      bar[j] = bar[j+1];
+      bar[j+1] = temp;
     }
-
-    // Directly swapping the bars
-
-    // let temp = bar[j].x;
-    // bar[j].x = bar[j+1].x;
-    // bar[j+1].x = temp;
-
-
-    // swapping the object
-    // temp = bar[j];
-    // bar[j] = bar[j+1];
-    // bar[j+1] = temp;
-
-    // console.log(temp);
   }
-  if(count == 0)
+  if(!busy)
   {
-    // count = 0;
     if (i < bar.length)
     {
       bar[j].colorBar(color(100));
@@ -69,42 +71,7 @@ function bubbleSort(bar)
       dist = 0;
       status = 0;
       bubble = false;
-      console.log("finished");
-    }
-  }
-  else if(count >= diff)
-  {
-    count = 0;
-    temp = bar[j];
-    bar[j] = bar[j+1];
-    bar[j+1] = temp;
-
-    if (i < bar.length)
-    {
-      bar[j].colorBar(color(100));
-      bar[j+1].colorBar(color(100));
-      j++;
-      if (j >= bar.length-i-1)
-      {
-        bar[j].colorBar(sortedColor); // sorted part is green
-        j = 0;
-        i++;
-      }
-
-    } else
-    {
-      for(let d = 0; d < bar.length; d++)
-      {
-        bar[d].colorBar(sortedColor);
-      }
-      noLoop();
-      i = 0;
-      j = 0;
-      k = 0;
-      count = 0;
-      dist = 0;
-      status = 0;
-      bubble = false;
+      busy = 0;
       console.log("finished");
     }
   }

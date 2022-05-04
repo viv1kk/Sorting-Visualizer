@@ -20,9 +20,10 @@ class Bar {
     fill(this.color);
     rect(this.x, height+this.y, this.width, -this.height);
     fill(color(100));
-    text(floor(this.height),this.x, height+ylevel-this.height-10);
+    text(floor(this.height),this.x, height+this.y-this.height-10);
   }
 
+//height+ylevel-this.height-10
   colorBar(color)
   {
     this.color = color;

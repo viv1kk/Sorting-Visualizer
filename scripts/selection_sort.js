@@ -1,7 +1,6 @@
 function selectionSort(bar)
 {
   const sortedColor = color(148, 179, 253);
-
   bar[i].colorBar(color(255,0,0));
   bar[mn].colorBar(color(0,255,0));
 
@@ -9,8 +8,6 @@ function selectionSort(bar)
   {
     let a = bar[j].height;
     let b = bar[mn].height;
-
-
 
     if(a < b)
     {
@@ -37,8 +34,6 @@ function selectionSort(bar)
         busy = 1;
       }
       // swapping the x values
-      // busy =1;zs
-
       if(busy)
       {
         if(count == 0)
@@ -61,17 +56,12 @@ function selectionSort(bar)
             bar[mn].moveBar(bar[mn].x-speed, ylevel);
           }
           count+=speed;
-          // disp();
         }
         if(count >= abs(dist))
         {
           count = 0;
           busy = 0;
         }
-
-        // temp = bar[i].x;
-        // bar[i].x = bar[mn].x;
-        // bar[mn].x = temp;
       }
 
       if(!busy)
@@ -97,8 +87,10 @@ function selectionSort(bar)
     j = 1;
     mn = i;
     busy = 0;
+    count = 0;
     status = 0;
+    dist = 0;
     console.log("finished");
   }
-  // disp();
+  disp();
 }
