@@ -1,20 +1,35 @@
 let bar = [];
 let canv;
-
 let bubble;
 let selection;
 let insertion;
-
+let quick;
+let merge;
+let no;
+let piv;
 let status = 0;
+let valdraw = false;
+let glock = 0;
+
+
+//quickSort
+
+let stack;
+let tp;
+let p;
+let setV = 0
+let busy1;
 
 function runAlgo()
 {
   if(status === 0)
   {
+    valdraw = false;
     bubble = false;
     selection = false;
     insertion = false;
-
+    quick = false;
+    merge = false;
     // alert(document.getElementById('algo').value);
     let val = document.getElementById('algo').value;
 
@@ -50,25 +65,51 @@ function runAlgo()
       count = 0;
       dist = 0;
     }
+    if(val === 'quick')
+    {
+      i = 0;
+      j = 0;
+      quick = true;
+      busy = 0;
+      busy1 = 0;
+      lb = 0;
+      ub = 0;
+      count = 0;
+      dist = 0;
+      pivot = 0;
+      status = 1;
+      lock  = 0;
+    }
+
+    if(val === 'merge')
+    {
+      // i = 0;
+      // j = 0;
+      // merge = true;
+      // busy = 0;
+      // busy1 = 0;
+      // l = 0;
+      // h = 0;
+      // count = 0;
+      // dist = 0;
+      // piv = 0;
+      // status = 1;
+      // lock  = 0;
+    }
+    no = document.getElementById('no').value;
   }
 }
-
+// var s = 239
 function setup()
 {
+  // console.log(no);
   canv = createCanvas(windowWidth/1.2, windowHeight/1.4);
   canv.parent("container_canvas");
   canv.position(100,100,"sticky");
+  // canv.position(100,100);
   canv.background(226, 222, 169);
 
-  ylevel = -10;
-  for (let i = 0; i < 25; i++)
-    {
-      bar[i] = new Bar(i); // no of elements
-      bar[i].createBar(20, random((height-50)));
-      bar[i].moveBar(20+(i*30), ylevel);
-      bar[i].colorBar(color(100));
-   }
-   frameRate(144);
+   frameRate(10);
 }
 
 let speedZero = 10; //-(1-10) +(11 - 50)
@@ -79,11 +120,15 @@ function draw()
 {
   canv.background(226, 222, 169);
 
-  if(mouseIsPressed)
+  if(valdraw === false)
+  {
+    createNewBars();
+  }
+
+  canvas.onmousedown = function()
   {
     sp = map(mouseX,0, width, 1, 50);
     tmp = speedZero;
-    // console.log(sp);
   }
   if(floor(sp) >= speedZero)
   {
@@ -122,6 +167,29 @@ function runSorting()
   {
     insertionSort(bar);
   }
+  else if(quick === true)
+  {
+      quickSort(bar, 0, bar.length-1)
+    // quickSort(bar, 0, bar.length-1, function()
+    // {
+    //   quick = false;
+    //   status = 0;
+    //   console.log("finished");
+    // });
+
+    for(let i = 0; i < bar.length; i++)
+    {
+      console.log(bar[i].height);
+    }
+  }
+  else if(merge === true)
+  {
+     mergeSort(bar , bar.length)
+     for(let i = 0; i < bar.length; i++)
+     {
+       console.log(bar[i].height);
+     }
+  }
 }
 
 function createNewBars() // when the Draw Random Values Button is clicked this will be executed
@@ -130,10 +198,10 @@ function createNewBars() // when the Draw Random Values Button is clicked this w
   if(status === 0)
   {
     //TODO : check if the button is clicked during an ongoing sorting process if yes then dont create new Bars /// DONE
-    // bar = [];
-
+    bar = [];
+    no = document.getElementById('no').value;
     ylevel = -10;
-    for (let i = 0; i < 25; i++)
+    for (let i = 0; i < no; i++)
     {
       bar[i] = new Bar(i); // no of elements
       bar[i].createBar(20, random((height-50+ylevel)));
@@ -141,6 +209,7 @@ function createNewBars() // when the Draw Random Values Button is clicked this w
       bar[i].colorBar(color(100));
     }
   }
+  valdraw = true;
 }
 
 function changeSize()

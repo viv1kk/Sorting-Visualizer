@@ -34,4 +34,5 @@ class Bar {
     this.width = width;
     this.height = height;
   }
+
 }

@@ -18,7 +18,7 @@ function bubbleSort(bar)
       if(count == 0)
       {
         dist = abs(bar[j+1].x - bar[j].x);
-        console.log(dist);
+        // console.log(dist);
       }
 
       if(count < dist) // Animate the swapping of two Bars

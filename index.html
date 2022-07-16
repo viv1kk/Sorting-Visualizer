@@ -5,14 +5,17 @@
     <title>Sorting Visualizer</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <!-- <script>window.onload = runAlgo</script> -->
     <script src="/scripts/sketch.js"></script>
     <script src="/scripts/Bar.js"></script>
     <script src="/scripts/global_vars.js"></script>
     <script src="/scripts/bubble_sort.js"></script>
     <script src="/scripts/selection_sort.js"></script>
     <script src="/scripts/insertion_sort.js"></script>
+    <script src="/scripts/quick_sort.js"></script>
+    <script src="/scripts/merge_sort.js"></script>
     <link rel="stylesheet" href="/styles/styles.css" />
+
   </head>
 
 
@@ -20,13 +23,17 @@
     <h1 id="heading">Sorting Visualizer</h1>
     <div class="option">
 
-      <form action="#">
+      <form action="#" id= "form" font = "Arial">
         <label for="Sorting">Choose Algorithm</label>
-        <select name="Select" id="algo" onchange="changeSize()">
+        <select name="Select" id="algo" value = "quick" onchange="changeSize()">
+          <option value="quick">Quick Sort</option>
+          <option value="merge">Merge Sort</option>
           <option value="bubble">Bubble Sort</option>
           <option value="selection">Selection Sort</option>
           <option value="insertion">Insertion Sort</option>
         </select>
+        <label for="vol"> No. of Bars</label> (10-40):</label>
+        <input type="range" id="no" name="no" min="10" max="40" value="10">
         <button type="button" onclick="runAlgo()">Sort!</button>
         <button type="button" onclick="createNewBars()">Draw Random Values</button>
       </form>
