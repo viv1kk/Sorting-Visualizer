@@ -5,5 +5,5 @@ Goals
   - Implement Bubble Sort Visualization by using Graphics       ✅
   - Implement Selection Sort Visualization by using Graphics    ✅
   - Implement Insertion Sort Visualization by using Graphics    ✅
-  - Implement Merge Sort Visualization by using Graphics
+  - Implement Merge Sort Visualization by using Graphics        ✅
   - Implement Quick Sort Visualization by using Graphics

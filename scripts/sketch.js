@@ -83,18 +83,18 @@ function runAlgo()
 
     if(val === 'merge')
     {
-      // i = 0;
-      // j = 0;
-      // merge = true;
-      // busy = 0;
-      // busy1 = 0;
-      // l = 0;
-      // h = 0;
-      // count = 0;
-      // dist = 0;
-      // piv = 0;
-      // status = 1;
-      // lock  = 0;
+      i = 0;
+      j = 0;
+      merge = true;
+      busy = 0;
+      busy1 = 0;
+      l = 0;
+      h = 0;
+      count = 0;
+      dist = 0;
+      piv = 0;
+      status = 1;
+      lock  = 0;
     }
     no = document.getElementById('no').value;
   }
@@ -184,10 +184,14 @@ function runSorting()
   }
   else if(merge === true)
   {
-     mergeSort(bar , bar.length)
+
+     mergeSort(bar, bar.length);
+
      for(let i = 0; i < bar.length; i++)
      {
-       console.log(bar[i].height);
+       bar[i].moveBar(20+(i*30), ylevel)
+         console.log(bar[i].height);
+        bar[i].colorBar(color(148, 179, 253))
      }
   }
 }
