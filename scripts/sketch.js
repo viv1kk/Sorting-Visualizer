@@ -109,7 +109,7 @@ function setup()
   // canv.position(100,100);
   canv.background(226, 222, 169);
 
-   frameRate(10);
+   frameRate(60);
 }
 
 let speedZero = 10; //-(1-10) +(11 - 50)

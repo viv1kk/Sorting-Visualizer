@@ -6,7 +6,7 @@ async function partition(arr, low, high)
       {
         dist = abs(arr[low].x-arr[high].x)
         fill(255, 204, 0, 200)
-        rect(arr[low].x-5, windowHeight/1.4, dist, -windowHeight/1.4)
+        rect(arr[low].x-5, (windowHeight/1.4)-5, dist, 10-windowHeight/1.4)
         pivot = arr[high];
 
 
